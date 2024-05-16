@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 
-export default async function Page({ params }: { params: string }) {
+export default async function Page({ params }: { params: { id: string } }) {
   const data: {
     id: string;
     state: string;
@@ -29,6 +29,8 @@ export default async function Page({ params }: { params: string }) {
   } = await fetch(
     `https://billions-api.nomadcoders.workers.dev/person/${params.id}`
   ).then((res) => res.json());
+
+  console.log(params);
   // const data = {
   //   id: "elon-musk",
   //   state: "Texas",
